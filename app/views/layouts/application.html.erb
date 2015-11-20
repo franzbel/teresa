@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if logged_in? %>
+    Holas: <%= current_user.name %>
+    <%= link_to 'Terminar sesion', sign_out_path, method: :delete %>
+<% else %>
+no estas logeado
+<% end %>
 <%= yield %>
 
 </body>

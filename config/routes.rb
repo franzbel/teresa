@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get  '/' => 'users#home', as: :home
+  post '/sign_up' => 'users#sign_up'
+  get  '/:name' => 'users#profile', as: :profile
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

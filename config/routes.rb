@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/publications' => 'publications#index', as: :publications
+
   get    '/'         => 'users#home',     as: :home
   post   '/sign_up'  => 'users#sign_up',  as: :sign_up
   post   '/sign_in'  => 'users#sign_in',  as: :sign_in
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
 
   post   '/follow'   => 'relationships#create', as: :follow
   delete '/unfollow' => 'relationships#destroy', as: :unfollow
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

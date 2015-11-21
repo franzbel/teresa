@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def profile
     # render(:text => params)
     @user = User.find_by_name(params[:name])
+    @posts = @user.posts
   end
 
   private

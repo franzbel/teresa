@@ -7,3 +7,7 @@ como es desde profile:
     </div>
     <%= f.submit('Publicar', class: "btn btn-primary") %>
 <% end %>
+
+<% @posts.each do |post| %>
+    <%= post.body %> <br>
+<% end %>

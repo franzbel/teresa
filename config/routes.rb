@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'users#sign_out', as: :sign_out
   get    '/:name'    => 'users#profile',  as: :profile
 
+  post   '/new_post' => 'posts#create',   as: :new_post
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

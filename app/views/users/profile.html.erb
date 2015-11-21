@@ -1,2 +1,9 @@
 como es desde profile:
 <%= @user.name %>
+
+<%= form_for :post, url: new_post_path do |f| %>
+    <div class="form-group">
+      <%= f.text_area(:body, class: "form-control", placeholder: 'How do you feel?') %>
+    </div>
+    <%= f.submit('Publicar', class: "btn btn-primary") %>
+<% end %>

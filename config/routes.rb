@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   post   '/new_post' => 'posts#create',   as: :new_post
 
+  post   '/follow'   => 'relationships#create', as: :follow
+  delete '/unfollow' => 'relationships#destroy', as: :unfollow
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

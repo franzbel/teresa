@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120192948) do
+ActiveRecord::Schema.define(version: 20151121060644) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20151120192948) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "idol_id"
+    t.integer  "fan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "relationships", ["fan_id"], name: "index_relationships_on_fan_id"
+  add_index "relationships", ["idol_id", "fan_id"], name: "index_relationships_on_idol_id_and_fan_id", unique: true
+  add_index "relationships", ["idol_id"], name: "index_relationships_on_idol_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

@@ -1,5 +1,28 @@
+<br>
 como es desde profile:
 <%= @user.name %>
+<br>
+Siguiendo:<%= @user.idols.count %>
+<br>
+Seguidores:<%= @user.fans.count %>
+<br>
+<% if @user.name != current_user.name %>
+    <% if current_user.following?(@user) %>
+        <%= form_for :relationship, url: unfollow_path, html: {method: :delete} do |f| %>
+            <%= hidden_field_tag :idol_id, @user.id %>
+            <%= f.submit('Dejar de seguir', class: "btn btn-primary") %>
+        <% end %>
+    <% else %>
+        <%= form_for :relationship, url: follow_path do |f| %>
+            <%= hidden_field_tag :idol_id, @user.id %>
+            <%= f.submit('Seguir', class: "btn btn-primary") %>
+        <% end %>
+
+    <% end %>
+
+<% end %>
+
+
 
 <%= form_for :post, url: new_post_path do |f| %>
     <div class="form-group">

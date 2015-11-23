@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post   '/sign_in'  => 'users#sign_in',  as: :sign_in
   delete '/sign_out' => 'users#sign_out', as: :sign_out
   get    '/:name'    => 'users#profile',  as: :profile
+  post '/upload_photo' => 'users#upload_photo', as: :upload_photo
+  post '/upload_cover' => 'users#upload_cover', as: :upload_cover
 
   post   '/new_post' => 'posts#create',   as: :new_post
 

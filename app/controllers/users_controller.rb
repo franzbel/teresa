@@ -35,8 +35,21 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def upload_photo
+    # render(:text => params)
+    if current_user.update(user_params)
+      redirect_to profile_path(current_user.name)
+    end
+  end
+
+  def upload_cover
+    if current_user.update(user_params)
+      redirect_to profile_path(current_user.name)
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :cover)
   end
 end

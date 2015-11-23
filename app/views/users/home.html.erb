@@ -1,28 +1,46 @@
-<%= form_for :user, url: sign_up_path do |f| %>
-    <div class="form-group">
-      <%= f.text_field(:name, class: "form-control", placeholder: "Tu nombre") %>
-    </div>
-    <div class="form-group">
-      <%= f.text_field(:email, class: "form-control", placeholder: "Email") %>
-    </div>
-    <div class="form-group">
-      <%= f.password_field(:password, class: "form-control", placeholder: "Contraseña") %>
-    </div>
-    <div class="form-group">
-      <%= f.password_field(:password_confirmation, class: "form-control", placeholder: "Confirmar contraseña") %>
-    </div>
+<div class="container-fluid home">
 
-    <%= f.submit("Registrarse", class: "btn btn-primary") %>
-<% end %>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="welcome">CONECTADO CON UN MUNDO DE OPORTUNIDADES </p>
+      </div>
+      <div class="col-md4"></div>
+      <div class="col-md-3">
+        <div class="formulario">
+          <%= form_for :user, url: sign_up_path do |f| %>
+              <div class="form-group">
+                <%= f.text_field(:name, class: "form-control", placeholder: "Tu nombre") %>
+              </div>
+              <div class="form-group">
+                <%= f.text_field(:email, class: "form-control", placeholder: "Email") %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field(:password, class: "form-control", placeholder: "Contraseña") %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field(:password_confirmation, class: "form-control", placeholder: "Confirmar contraseña") %>
+              </div>
 
+              <%= f.submit("Registrarse", class: "btn btn-primary") %>
+          <% end %>
 
-<%= form_for :sesion, url: sign_in_path do |f| %>
-    <div class="form-group">
-      <%= f.text_field(:email, class: "form-control", placeholder: "Email") %>
+        </div>
+        <div class="formulario">
+          <%= form_for :sesion, url: sign_in_path do |f| %>
+              <div class="form-group">
+                <%= f.text_field(:email, class: "form-control", placeholder: "Email") %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field(:password, class: "form-control", placeholder: "Contraseña") %>
+              </div>
+
+              <%= f.submit('Iniciar sesion', class: "btn btn-primary") %>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="col-md-1">
+
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.password_field(:password, class: "form-control", placeholder: "Contraseña") %>
-    </div>
-
-    <%= f.submit('Iniciar sesion', class: "btn btn-primary") %>
-<% end %>
+</div>

@@ -1,3 +1,65 @@
-<% @posts.each do |post| %>
-    <%= post.body %> <br>
-<% end %>
+<style>
+    #img-avatar-publications{
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= form_for :post, url: new_post_path do |f| %>
+          <div class="form-group">
+            <%= f.text_area(:body, class: "form-control", placeholder: 'How do you feel?') %>
+          </div>
+          <%= f.submit('Publicar', class: "btn btn-primary") %>
+      <% end %>
+
+      <% @posts.each do |post| %>
+      <div class="container-body">
+
+            <%= image_tag post.user.avatar.url, id: 'img-avatar-publications' %>
+            <p><%= post.body %> </p>
+
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class=" glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class=" glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+        </button>
+      </div>
+      <% end %>
+
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="sugerencia-amistad">SUGERENCIAS</div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>1).avatar.url, class: 'img-avatar' %></div>
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>2).avatar.url, class: 'img-avatar' %></div>
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>3).avatar.url, class: 'img-avatar' %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>4).avatar.url, class: 'img-avatar' %></div>
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>5).avatar.url, class: 'img-avatar' %></div>
+        <div class="col-md-4"><%= image_tag User.find_by(:id=>6).avatar.url, class: 'img-avatar' %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+        <div class="col-md-4" style="padding: 5px 5px"><a class="btn btn-danger btn-block btn-xs" href="#" role="button">Seguir</a></div>
+      </div>
+    </div>
+  </div>
+</div>

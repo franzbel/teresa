@@ -8,12 +8,35 @@
 </head>
 <body>
 <% if logged_in? %>
-    Holas: <%= current_user.name %>
-    <%= link_to 'Terminar sesion', sign_out_path, method: :delete %>
-<% else %>
-no estas logeado
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'UCB', publications_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "#{current_user.name}", profile_path(current_user.name) %></li>
+        <li><%= link_to 'Publicaciones', publications_path %></li>
+        <li><a href="#">Notificaciones</a></li>
+
+        <li><%= link_to 'Terminar sesion', sign_out_path, method: :delete %></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <input type="text" class="form-control" placeholder="Buscar...">
+      </form>
+    </div>
+  </div>
+</nav>
 <% end %>
-<%= yield %>
+
+  <%= yield %>
+
 
 </body>
 </html>

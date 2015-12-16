@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.format-text{
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 .img-post{
   width: 100%;
@@ -28,15 +32,24 @@
 html, body {
   width: 100%;
   height: 100%;
+  //border: 3px solid red;
+  //overflow: hidden;
 }
 
+.formulario2{
+  margin-bottom: 140px;
+}
 .home{
+  //border: 4px solid blue;
   background: image-url('ciudad.jpg');
-  height: 100%;
+
   width: 100%;
+  height: auto;
   background-size: cover;
   //padding-top: -50px;
   margin-top: -50px;
+
+
 }
 //p{
 //  margin-top: 25px;

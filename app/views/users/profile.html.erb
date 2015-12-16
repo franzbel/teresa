@@ -77,7 +77,8 @@
     <%= form_for :post, url: new_post_path do |f| %>
         <div class="form-group">
           <%= f.text_area(:body, class: "form-control", placeholder: 'How do you feel?') %>
-          <%= f.file_field :image %>
+          <label for="post_image"><span class="glyphicon glyphicon-camera"></span></label>
+          <%= f.file_field :image, class: 'inputfile' %>
         </div>
         <%= f.submit('Publicar', class: "btn btn-primary") %>
     <% end %>
@@ -86,7 +87,7 @@
           <%= image_tag @user.avatar.url, id: 'img-avatar' %>
           <h5><%= post.user.name %></h5>
           <%= image_tag post.pictures.first.image.url, class: 'img-post' %>
-          <p><%= post.body %></p>
+          <p class="format-text"><%= post.body %></p>
           <button type="button" class="btn btn-default" aria-label="Left Align">
             <span class=" glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
           </button>
@@ -132,4 +133,3 @@
 
 
 </div>
-

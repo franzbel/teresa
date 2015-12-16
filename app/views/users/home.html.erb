@@ -1,10 +1,10 @@
-<div class="container-fluid home">
+<div class="container home">
 
     <div class="row">
       <div class="col-md-4">
         <p class="welcome">CONECTADO CON UN MUNDO DE OPORTUNIDADES </p>
       </div>
-      <div class="col-md4"></div>
+      <div class="col-md-4"></div>
       <div class="col-md-3">
         <div class="formulario">
           <%= form_for :user, url: sign_up_path do |f| %>
@@ -25,7 +25,7 @@
           <% end %>
 
         </div>
-        <div class="formulario">
+        <div class="formulario formulario2">
           <%= form_for :sesion, url: sign_in_path do |f| %>
               <div class="form-group">
                 <%= f.text_field(:email, class: "form-control", placeholder: "Email") %>

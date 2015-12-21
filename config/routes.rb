@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+# UNA RUTA PARA AUTOCOMPLETE y SERACH
+  get '/search' => 'searches#search', as: :search
+  get '/autocomplete/:query' => 'searches#autocomplete', as: :autocomplete
+
+
   get '/publications' => 'publications#index', as: :publications
 
   get    '/'         => 'users#home',     as: :home
@@ -14,7 +19,6 @@ Rails.application.routes.draw do
 
   post   '/follow'   => 'relationships#create', as: :follow
   delete '/unfollow' => 'relationships#destroy', as: :unfollow
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

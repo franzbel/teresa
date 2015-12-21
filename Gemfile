@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'faker', '~> 1.6', '>= 1.6.1'
+gem 'searchkick', '~> 1.1', '>= 1.1.1'
 gem 'bcrypt', '~> 3.1', '>= 3.1.10'
 gem 'paperclip', '~> 4.3'
 

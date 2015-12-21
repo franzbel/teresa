@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  searchkick autocomplete: ['name']
+
   has_attached_file :avatar,
                     # styles: { medium: '180x180>', thumb: '100x100>'},
                     default_url: '/images/:style/missing-avatar.png'

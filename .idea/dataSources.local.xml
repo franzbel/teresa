@@ -3,5 +3,6 @@
   <component name="dataSourceStorageLocal">
     <data-source name="development" uuid="9703bcc2-9386-4cc4-88e9-5df65353f6a3" />
     <data-source name="development [2]" uuid="61d47e9e-5a2d-4cda-b137-1e24aa3f86d5" />
+    <data-source name="Rails teresa: development" uuid="3f6dad65-75b1-4077-b38c-79c276e18fae" />
   </component>
 </project>

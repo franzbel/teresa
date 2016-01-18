@@ -741,3 +741,87 @@ body{
 .container-stat >.row > div{
   /*height: 55px;*/
 }
+//ESTILOS PARA PROFILE
+.enlaces-perfil{
+  display: block;
+  text-decoration: none;
+  //background-color: #4285f4;
+  background-color: rgb(66,139,202);
+  height: 55px;
+  padding: 18px;
+  //margin-top: 15px;
+  //margin-right: 32px;
+  color: white;
+  width: 100%;
+  margin-bottom: 3px;
+  border-radius: 3px;
+}
+.enlaces-perfil:hover{
+  text-decoration: none;
+  background-color: rgb(58, 83, 155);
+  color: white;
+  font-size: 1.5em;
+  padding: 13px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.btn{
+  //border-radius: 0;
+}
+.contenedor-enlaces{
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+.thumbnail {
+  padding: 0 0 2px 0;
+  border: none;
+  border-radius: 0;
+  width: 90px;
+  height: 90px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.thumbnail p {
+  margin-top: 15px;
+  color: #555;
+}
+.img-sugerencia{
+  width: 70px;
+  height: 70px;
+}
+.contenedor-sugerencia{
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  //border: 1px solid red;
+  margin: 8px 3px 8px 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.my-btn{
+  //margin-top: 25px;
+  //padding: 10px 20px;
+  //background-color: #333;
+  //color: #f1f1f1;
+  //border-radius: 0;
+  //transition: .2s;
+  width: 50px;
+}
+.my-btn:hover, .my-btn:focus {
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #000;
+}
+.col-md-4{
+  //border: 1px solid red;
+}
+.col-derecha{
+  background-color: white;
+  border-radius: 8px;
+}
+.texto-sugerencias{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+}
+.contenedor-sugerencia p{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+}

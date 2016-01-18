@@ -1,0 +1,90 @@
+
+<div id="fondo">
+  <div class="container">
+    <div class="curriculum">
+      <div class="row fila">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-4">
+              <div id="sup-izq"></div>
+              <div id="separador-sup"></div>
+            </div>
+            <div class="col-md-8">
+              <div id="sup-der">
+                <div class="link-edit">
+                  <span class="glyphicon glyphicon-pencil space" aria-hidden="true"></span><%= link_to 'EDITAR', edit_resume_path(@resume), id: 'link-edit'%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="nombre"><%= @resume.name%></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="inf-izq">
+                <div id="container-photo">
+                  <%= image_tag @resume.photos.first.photo.url(:resume), class: 'photo-resume'%>
+                </div>
+
+                <div id="separador-inf"></div>
+                <% @resume.emails.each do |email|  %>
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    <p> <%= email.email %></p> <br>
+                <% end %>
+                <% @resume.phones.each do |phone|  %>
+                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                    <p> <%= phone.number %></p> <br>
+                <% end %>
+                <% @resume.sites.each do |site|  %>
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                    <a href="<%= site.name %>"> <%= site.name %></a> <br>
+                <% end %>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+              <p class="encabezado-cv">EXPERIENCIA PROFESIONAL</p>
+              <% @resume.experiences.each do |experience|  %>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="texto-fecha"><%= experience.start_date %> <span class="space"> </span> <%= experience.end_date %></p>
+                    </div>
+                    <div class="col-md-8">
+                      <p class="texto-trabajo"><%= experience.job_title %></p>
+                      <p class="texto-empresa"><%= experience.company_name %></p>
+                      <p class="texto-descripcion"><%= experience.job_description %></p>
+                    </div>
+                  </div>
+              <% end %>
+              <p class="encabezado-cv">FORMACIÓN ACADEMICA</p>
+              <% @resume.educations.each do |education|  %>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <p class="texto-fecha"><%= education.start_date %> <span class="space"> </span> <%= education.end_date %></p>
+                    </div>
+                    <div class="col-md-8">
+                      <p class="texto-trabajo"><%= education.degree_name %></p>
+                      <p class="texto-empresa"><%= education.school_name %></p>
+                      <p class="texto-descripcion"><%= education.education_description %></p>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+    $(document).ready(function(){
+        $('.inf-izq').css('height',$('.fila').height());
+    });
+</script>

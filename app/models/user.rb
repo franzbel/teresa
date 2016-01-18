@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :resume
   searchkick autocomplete: ['name']
 
   has_attached_file :avatar,

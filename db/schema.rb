@@ -11,7 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123220549) do
+ActiveRecord::Schema.define(version: 20160116171508) do
+
+  create_table "educations", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "degree_name"
+    t.string   "school_name"
+    t.text     "education_description"
+    t.integer  "resume_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "educations", ["resume_id"], name: "index_educations_on_resume_id"
+
+  create_table "emails", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "emails", ["resume_id"], name: "index_emails_on_resume_id"
+
+  create_table "experiences", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "job_title"
+    t.string   "company_name"
+    t.text     "job_description"
+    t.integer  "resume_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "experiences", ["resume_id"], name: "index_experiences_on_resume_id"
+
+  create_table "phones", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "phones", ["resume_id"], name: "index_phones_on_resume_id"
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "resume_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "photos", ["resume_id"], name: "index_photos_on_resume_id"
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "post_id"
@@ -44,6 +100,24 @@ ActiveRecord::Schema.define(version: 20151123220549) do
   add_index "relationships", ["fan_id"], name: "index_relationships_on_fan_id"
   add_index "relationships", ["idol_id", "fan_id"], name: "index_relationships_on_idol_id_and_fan_id", unique: true
   add_index "relationships", ["idol_id"], name: "index_relationships_on_idol_id"
+
+  create_table "resumes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "resumes", ["user_id"], name: "index_resumes_on_user_id"
+
+  create_table "sites", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "resume_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sites", ["resume_id"], name: "index_sites_on_resume_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

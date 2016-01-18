@@ -1,0 +1,507 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="contenedor-menu">
+        <div class="item-menu" id="informacion-basica">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Información básica
+        </div>
+        <hr>
+        <div class="item-menu" id="experiencia-profesional">
+          <span class=" glyphicon glyphicon-briefcase" aria-hidden="true"></span> Experiencia profesional
+        </div>
+        <hr>
+        <div class="item-menu" id="formacion-academica">
+          <span class="glyphicon glyphicon-education" aria-hidden="true"></span> Formación académica
+        </div>
+        <hr>
+        <div class="item-menu" id="confirmar-cambios">
+          <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Guardar información
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+
+      <%= form_for @resume do |f| %>
+          <div class="contenedor-menu informacion-basica">
+            <!---------------------------------------FOTO--------------------------------------->
+            <div class="item-menu agregar-campo-foto">
+              <div class="hand-down-photo"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Foto</div>
+              <div class="stop-photo"><i class="fa fa-hand-stop-o"></i> Foto</div>
+            </div>
+            <hr>
+            <div class="campos-foto">
+              <%= f.fields_for :photos do |photo_form| %>
+                   <div class="campo-foto">
+                    <span class="glyphicon glyphicon-trash eliminar-campo-foto" aria-hidden="true"></span>
+                    <div id="imagePreview" class="center-block img-circle"></div>
+                    <%= photo_form.label :photo, '<span class="glyphicon glyphicon-camera"></span>'.html_safe %>
+                    <%= photo_form.file_field :photo, class: 'foto'%>
+                  </div>
+              <% end %>
+            </div>
+            <!-------------------------------------FIN FOTO------------------------------------->
+            <!------------------------------------- NOMBRE ------------------------------------->
+            <div class="item-menu agregar-campo-nombre">
+              <!--<span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Nombre completo-->
+              <div class="hand-down-name"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Nombre</div>
+              <div class="stop-name"><i class="fa fa-hand-stop-o"></i> Nombre</div>
+            </div>
+            <hr>
+            <div class="campos-nombre">
+              <div class="campo-nombre">
+                <span class="glyphicon glyphicon-user icon-user" aria-hidden="true"></span>
+                <span >Nombre completo</span>
+                <span class="glyphicon glyphicon-trash eliminar-campo-nombre" aria-hidden="true"></span>
+                <%= f.text_field(:name , class:'form-control campo-plano')%>
+                <hr>
+              </div>
+            </div>
+            <!------------------------------------FIN NOMBRE ----------------------------------->
+            <!------------------------------------- CORREOS------------------------------------->
+            <div class="item-menu agregar-campo-correo">
+              <div class="hand-down-email"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Correo</div>
+              <div class="stop-email"><i class="fa fa-hand-stop-o hand-right-phone"></i> Correo</div>
+            </div>
+            <hr>
+            <div class="campos-correo">
+              <%= f.fields_for :emails do |email_form| %>
+                <div class="campo-correo">
+                  <span class="glyphicon glyphicon-envelope icon-user" aria-hidden="true"></span>
+                  <span >Correo electrónico</span>
+                  <span class="glyphicon glyphicon-trash eliminar-campo-correo" aria-hidden="true"></span>
+                  <%= email_form.text_field :email, class:'form-control campo-plano'%>
+                  <hr>
+                </div>
+              <% end %>
+            </div>
+            <!-------------------------------------FIN CORREOS------------------------------------>
+            <!------------------------------------- TELEFONOS------------------------------------->
+            <div class="item-menu agregar-campo-telefono">
+              <div class="hand-down-phone"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Teléfono</div>
+              <div class="stop-phone"><i class="fa fa-hand-stop-o hand-right-phone"></i> Teléfono</div>
+            </div>
+            <hr>
+            <div class="campos-telefono">
+              <%= f.fields_for :phones do |phone_form| %>
+                  <div class="campo-telefono">
+                    <span class="glyphicon glyphicon-phone-alt icon-user" aria-hidden="true"></span>
+                    <span >Teléfono</span>
+                    <span class="glyphicon glyphicon-trash eliminar-campo-telefono" aria-hidden="true"></span>
+                    <%= phone_form.text_field :number, class:'form-control campo-plano'%>
+                    <hr>
+                  </div>
+              <% end %>
+            </div>
+            <!-----------------------------------FIN TELEFONOS------------------------------------>
+            <!-------------------------------------SITIOS WEB------------------------------------->
+            <div class="item-menu agregar-campo-sitio">
+              <div class="hand-down-sitio"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Sitio Web</div>
+              <div class="stop-web"><i class="fa fa-hand-stop-o"></i> Sitio Web</div>
+            </div>
+            <hr>
+            <div class="campos-sitio">
+              <%= f.fields_for :sites do |site_form| %>
+                  <div class="campo-sitio">
+                    <span class="glyphicon glyphicon-globe icon-user" aria-hidden="true"></span>
+                    <span >Sitio Web</span>
+                    <span class="glyphicon glyphicon-trash eliminar-campo-sitio" aria-hidden="true"></span>
+                    <%= site_form.text_field :name, class:'form-control campo-plano'%>
+                    <hr>
+                  </div>
+              <% end %>
+            </div>
+            <!-----------------------------------FIN SITIOS WEB----------------------------------->
+          </div>
+          <!-------------------------------------EXPERIENCIA------------------------------------->
+          <div class="contenedor-menu experiencia-profesional">
+            <div class="item-menu agregar-campo-experiencia">
+              <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Experiencia profesional-->
+              <div class="hand-down-experiencia"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Experiencia Profesional</div>
+              <div class="stop-experiencia"><i class="fa fa-hand-stop-o"></i> Experiencia Profesional</div>
+            </div>
+            <hr>
+            <div class="campos-experiencia">
+                <%= f.fields_for :experiences do |experience_form| %>
+                    <div class="campo-experiencia">
+                      <span class="glyphicon glyphicon-trash eliminar-campo-experiencia" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                      <span >Fecha inicio</span>
+                      <%= experience_form.date_field :start_date, class:'form-control campo-plano'%>
+                      <hr>
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                      <span >Fecha final</span>
+                      <%= experience_form.date_field :end_date, class:'form-control campo-plano'%>
+                      <hr>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      <span >Cargo ocupado</span>
+                      <%= experience_form.text_field :job_title, class:'form-control campo-plano'%>
+                      <hr>
+                      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                      <span >Nombre de la empresa</span>
+                      <%= experience_form.text_field :company_name, class:'form-control campo-plano'%>
+                      <hr>
+                      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                      <span >Descripcion del trabajo</span>
+                      <%= experience_form.text_area :job_description, class:'form-control campo-plano'%>
+                    </div>
+                <% end %>
+            </div>
+          </div>
+          <!----------------------------------FIN EXPERIENCIA------------------------------------>
+          <!-------------------------------------FORMACIÓN--------------------------------------->
+          <div class="contenedor-menu formacion-academica">
+            <div class="item-menu agregar-campo-formacion">
+              <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Experiencia profesional-->
+              <div class="hand-down-formacion"><span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Formación Academica</div>
+              <div class="stop-formacion"><i class="fa fa-hand-stop-o"></i>  Formación Academica</div>
+            </div>
+            <div class="campos-formacion">
+              <%= f.fields_for :educations do |education_form| %>
+                  <div class="campo-formacion">
+                    <span class="glyphicon glyphicon-trash eliminar-campo-formacion" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span >Fecha inicio</span>
+                    <%= education_form.date_field :start_date, class:'form-control campo-plano'%>
+                    <hr>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <span >Fecha final</span>
+                    <%= education_form.date_field :end_date, class:'form-control campo-plano'%>
+                    <hr>
+                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                    <span >Grado obtenido</span>
+                    <%= education_form.text_field :degree_name, class:'form-control campo-plano'%>
+                    <hr>
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    <span >Nombre de la universidad</span>
+                    <%= education_form.text_field :school_name, class:'form-control campo-plano'%>
+                    <hr>
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    <span >Descripcion de la educación</span>
+                    <%= education_form.text_area :education_description, class:'form-control campo-plano'%>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+          <!-----------------------------------FIN FORMACIÓN------------------------------------->
+      <% end %>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+//------------------------INFORMACION BASICA---------------------------//
+      $('#informacion-basica').click(function(){
+          $('.experiencia-profesional').slideUp(500);
+          $('.formacion-academica').slideUp();
+          $('.informacion-basica').slideToggle(500);
+      });
+//-----------------------FIN INFORMACION BASICA-------------------------//
+
+//------------------------EXPERIENCIA LABORAL---------------------------//
+      $('#experiencia-profesional').click(function(){
+          $('.informacion-basica').slideUp(500)
+          $('.formacion-academica').slideUp();;
+          $('.experiencia-profesional').slideToggle(500);
+      });
+
+//----------------------FIN EXPERIENCIA LABORAL-------------------------//
+
+//------------------------FORMACION ACADEMICA---------------------------//
+      $('#formacion-academica').click(function(){
+          $('.informacion-basica').slideUp(500);
+          $('.experiencia-profesional').slideUp(500);
+          $('.formacion-academica').slideToggle();
+      });
+
+//----------------------FIN FORMACION ACADEMICA-------------------------//
+
+
+//---------------------PREVISUALIZAR FOTO-------------------------//
+  $("#resume_photos_attributes_0_photo").on("change", function()
+  {
+      var files = !!this.files ? this.files : [];
+      if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+      if (/^image/.test( files[0].type)){ // only image file
+
+          var reader = new FileReader(); // instance of the FileReader
+          reader.readAsDataURL(files[0]); // read the local file
+
+          reader.onloadend = function(){ // set image data as background of div
+              $("#imagePreview").css("background-image", "url("+this.result+")");
+          }
+      }
+  });
+//-------------------FIN PREVISUALIZAR FOTO-----------------------//
+
+//----------------------------- FOTO -----------------------------//
+
+  $('.agregar-campo-foto').click(function(){
+      $('.campo-foto').slideDown();
+      if($('.campos-foto > :hidden').length == 0){
+          $('.hand-down-photo').slideUp(200);
+          $('.stop-photo').slideDown(500);
+      }
+  });
+  $('.eliminar-campo-foto').click(function(){
+
+      $(this).parent('div').slideToggle();
+      $('.foto').val("");
+      if ($('.campos-foto > :hidden').length < $('.campos-foto > .campo-foto').length)
+      {
+          $('.hand-down-photo').slideDown(500);
+          $('.stop-photo').slideUp(200);
+      }
+      $("#imagePreview").css("background-image", "url('/assets/missing.png')");
+  });
+//---------------------------FIN FOTO -----------------------------//
+
+//------------------------NOMBRE COMPLETO-------------------------//
+
+  $('.agregar-campo-nombre').click(function(){
+      $('.campo-nombre').slideDown();
+      if($('.campos-nombre > :hidden').length == 0){
+          $('.hand-down-name').slideUp(200);
+          $('.stop-name').slideDown(500);
+      }
+  });
+  $('.eliminar-campo-nombre').click(function(){
+      $(this).parent('div').slideToggle();
+      $(this).next().val("");
+      if ($('.campos-nombre > :hidden').length < $('.campos-nombre > .campo-nombre').length)
+      {
+          $('.hand-down-name').slideDown(500);
+          $('.stop-name').slideUp(200);
+      }
+  });
+
+
+//----------------------FIN NOMBRE COMPLETO-----------------------//
+
+
+//-------------------------CORREOS------------------------------//
+      $('.agregar-campo-correo').click(function(){
+          var cont = 0;
+          var max = $('.campos-correo > .campo-correo').length;
+          while(cont < max){
+              var id = '#resume_emails_attributes_'+cont+'_email';
+              if($(id).parent().is(':hidden')){
+                  $($(id).parent()).prependTo('.campos-correo');
+                  $(id).parent().slideDown();
+                  if($('.campos-correo > :hidden').length == 0){
+                      $('.hand-down-email').slideUp(200);
+                      $('.stop-email').slideDown(500);
+                  }
+                  return;
+              }
+              cont++;
+          }
+      });
+
+      $('.eliminar-campo-correo').click(function(){
+          $(this).parent('div').slideToggle();
+          $(this).next().val("");
+          if ($('.campos-correo > :hidden').length < $('.campos-correo > .campo-correo').length)
+          {
+              $('.hand-down-email').slideDown(500);
+              $('.stop-email').slideUp(200);
+          }
+      });
+
+//-----------------------FIN  CORREOS----------------------------//
+
+//--------------------------TELEFONOS-----------------------------//
+  $('.agregar-campo-telefono').click(function(){
+      var cont = 0;
+      var max = $('.campos-telefono > .campo-telefono').length;
+      while(cont < max){
+          var id = '#resume_phones_attributes_'+cont+'_number';
+          if($(id).parent().is(':hidden')){
+              $($(id).parent()).prependTo('.campos-telefono');
+              $(id).parent().slideDown();
+              if($('.campos-telefono > :hidden').length == 0){
+                  $('.hand-down-phone').slideUp(200);
+                  $('.stop-phone').slideDown(500);
+              }
+              return;
+          }
+          cont++;
+      }
+  });
+  $('.eliminar-campo-telefono').click(function(){
+      $(this).parent('div').slideToggle();
+      $(this).next().val("");
+      if ($('.campos-telefono > :hidden').length < $('.campos-telefono > .campo-telefono').length)
+      {
+          $('.hand-down-phone').slideDown(500);
+          $('.stop-phone').slideUp(200);
+      }
+  });
+
+//------------------------FIN TELEFONOS---------------------------//
+
+//-------------------------SITIOS WEB-----------------------------//
+  $('.agregar-campo-sitio').click(function(){
+      var cont = 0;
+      var max = $('.campos-sitio > .campo-sitio').length;
+      while(cont < max){
+          var id = '#resume_sites_attributes_'+cont+'_name';
+          if($(id).parent().is(':hidden')){
+              $($(id).parent()).prependTo('.campos-sitio');
+              $(id).parent().slideDown();
+              if($('.campos-sitio > :hidden').length == 0){
+                  $('.hand-down-sitio').slideUp(200);
+                  $('.stop-web').slideDown(500);
+              }
+              return;
+          }
+          cont++;
+      }
+  });
+
+  $('.eliminar-campo-sitio').click(function(){
+      $(this).parent('div').slideToggle();
+      $(this).next().val("");
+      if ($('.campos-sitio > :hidden').length < $('.campos-sitio > .campo-sitio').length)
+      {
+          $('.hand-down-sitio').slideDown(500);
+          $('.stop-web').slideUp(200);
+      }
+  });
+
+//------------------------FIN SITIOS WEB--------------------------//
+
+
+
+//-------------------------EXPERIENCIA----------------------------//
+
+    $('.agregar-campo-experiencia').click(function(){
+      var cont = 0;
+      var max = $('.campos-experiencia > .campo-experiencia').length;
+      while(cont < max){
+
+          var id_start_date = '#resume_experiences_attributes_'+cont+'_start_date';
+          var id_end_date = '#resume_experiences_attributes_'+cont+'_end_date';
+          var id_job_title = '#resume_experiences_attributes_'+cont+'_job_title';
+          var id_company_name = '#resume_experiences_attributes_'+cont+'_company_name';
+          var id_job_description = '#resume_experiences_attributes_'+cont+'_job_description';
+
+          if($(id_start_date).parent().is(':hidden')){
+              $($(id_start_date).parent()).prependTo('.campos-experiencia');
+              $(id_start_date).parent().slideDown();
+              return;
+          }
+          if($(id_end_date).parent().is(':hidden')){
+              $($(id_end_date).parent()).prependTo('.campos-experiencia');
+              $(id_end_date).parent().slideDown();
+              return;
+          }
+          if($(id_job_title).parent().is(':hidden')){
+              $($(id_job_title).parent()).prependTo('.campos-experiencia');
+              $(id_job_title).parent().slideDown();
+              return;
+          }
+          if($(id_company_name).parent().is(':hidden')){
+              $($(id_company_name).parent()).prependTo('.campos-experiencia');
+              $(id_company_name).parent().slideDown();
+              return;
+          }
+          if($(id_job_description).parent().is(':hidden')){
+              $($(id_job_description).parent()).prependTo('.campos-experiencia');
+              $(id_job_description).parent().slideDown();
+              return;
+          }
+          if($('.campos-experiencia > :hidden').length == 1){
+              $('.hand-down-experiencia').slideUp(200);
+              $('.stop-experiencia').slideDown(500);
+          }
+
+          cont++;
+      }
+    });
+
+    $('.eliminar-campo-experiencia').click(function(){
+      $(this).parent('div').slideToggle();
+      $(this).next().val("");
+      if ($('.campos-experiencia > :hidden').length < $('.campos-experiencia > .campo-experiencia').length)
+      {
+          $('.hand-down-experiencia').slideDown(500);
+          $('.stop-experiencia').slideUp(200);
+      }
+    });
+
+//----------------------FIN EXPERIENCIA LABORAL-------------------------//
+
+//-----------------------FORMACIÓN ACADEMICA----------------------------//
+
+      $('.agregar-campo-formacion').click(function(){
+          var cont = 0;
+          var max = $('.campos-formacion > .campo-formacion').length;
+          while(cont < max){
+
+              var id_start_date = '#resume_educations_attributes_'+cont+'_start_date';
+              var id_end_date = '#resume_educations_attributes_'+cont+'_end_date';
+              var id_degree_name = '#resume_educations_attributes_'+cont+'_degree_name';
+              var id_school_name = '#resume_educations_attributes_'+cont+'_school_name';
+              var id_education_description = '#resume_educations_attributes_'+cont+'_education_description';
+
+              if($(id_start_date).parent().is(':hidden')){
+                  $($(id_start_date).parent()).prependTo('.campos-formacion');
+                  $(id_start_date).parent().slideDown();
+                  return;
+              }
+              if($(id_end_date).parent().is(':hidden')){
+                  $($(id_end_date).parent()).prependTo('.campos-formacion');
+                  $(id_end_date).parent().slideDown();
+                  return;
+              }
+              if($(id_degree_name).parent().is(':hidden')){
+                  $($(id_degree_name).parent()).prependTo('.campos-formacion');
+                  $(id_degree_name).parent().slideDown();
+                  return;
+              }
+              if($(id_school_name).parent().is(':hidden')){
+                  $($(id_school_name).parent()).prependTo('.campos-formacion');
+                  $(id_school_name).parent().slideDown();
+                  return;
+              }
+              if($(id_education_description).parent().is(':hidden')){
+                  $($(id_education_description).parent()).prependTo('.campos-formacion');
+                  $(id_education_description).parent().slideDown();
+                  return;
+              }
+              if($('.campos-formacion > :hidden').length == 1){
+                  $('.hand-down-formacion').slideUp(200);
+                  $('.stop-formacion').slideDown(500);
+              }
+
+              cont++;
+          }
+      });
+
+      $('.eliminar-campo-formacion').click(function(){
+          $(this).parent('div').slideToggle();
+          $(this).next().val("");
+          if ($('.campos-formacion > :hidden').length < $('.campos-formacion > .campo-formacion').length)
+          {
+              $('.hand-down-formacion').slideDown(500);
+              $('.stop-formacion').slideUp(200);
+          }
+      });
+
+//----------------------FIN FORMACION ACADEMICA-------------------------//
+//-----------------------ENVIAR EL FORMULARIO---------------------------//
+    $('#confirmar-cambios').click(function(){
+
+        $('#new_resume').submit();
+    });
+//---------------------FIN ENVIAR EL FORMULARIO-------------------------//
+  });
+</script>
+

@@ -1,7 +1,424 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// ESTILOS PARA EL BUSCADOR
+//**********ESTILOS PARA EL FORMULARIO DE CURRICULUM********//
+//**************ESTILOS PARA LOS BOTONES DEL MENU***********//
+.item-menu{
+  background-color: #4285f4;
+  height: 55px;
+  padding: 18px;
+  //margin-top: 15px;
+  //margin-right: 32px;
+  color: white;
+  width: 100%;
+}
+.boton-enviar{
+  background-color: #4285f4;
+  height: 55px;
+  padding: 18px;
+  //margin-top: 15px;
+  //margin-right: 32px;
+  color: white;
+  width: 100%;
+  border: 0;
+}
+.boton-enviar:hover{
+  background-color: rgba(231, 76, 60,1.0);
+  color: white;
+  font-size: 1.5em;
+  padding: 13px;
+  cursor: pointer;
+}
+hr{
+  padding: 0;
+  margin: 0;
+}
+.item-menu:hover, .activo{
+  background-color: rgb(58, 83, 155);
+  color: white;
+  font-size: 1.5em;
+  padding: 13px;
+  cursor: pointer;
+}
+.contenedor-menu{
+  background-color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+
+}
+body{
+  background-color: rgb(216, 223, 234);
+}
+//**********************************************************//
+//***INTERACCION DEL MENU PRINCIPAL Y LOS CAMPOS DEL FORM***//
+
+#otro{
+  display: block;
+}
+
+.informacion-basica, .experiencia-profesional, .formacion-academica{
+  display: none;
+}
+
+//---------INICIO-FOTO---------//
+
+.campo-foto{
+  display: none;
+}
+
+#imagePreview{
+  width: 80px;
+  height:80px;
+
+  background-size: cover;
+  padding: 0;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  //background-image: url('/assets/missing.png');
+  background-image: url(image-path('missing.png'));
+  border: 0;
+}
+[type="file"]{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+label[for=resume_photos_attributes_0_photo]{
+  padding-top: 4px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  margin-left: 185px;
+  margin-right: 185px;
+  margin-bottom: 0px;
+  position: relative;
+  bottom: 2px;
+}
+label[for=resume_photos_attributes_0_photo]:hover{
+  background-color: rgba(231, 76, 60,1.0);
+  color: white;
+  border: none;
+  font-size: 1.25em;
+
+}
+//----------FIN-FOTO-----------//
+.campo-experiencia{
+  display: none;
+}
+.campo-sitio{
+  display: none;
+}
+.campo-telefono{
+  display: none;
+}
+.campo-nombre{
+  display: none;
+}
+
+.campo-correo{
+  display: none;
+}
+.campo-formacion{
+  display: none;
+}
+.eliminar-campo-formacion{
+  float: right;
+  cursor: pointer;
+  position: relative;
+  top: -12px;
+  right: 8px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: white;
+}
+.eliminar-campo-formacion:hover{
+  background-color: #f44336;
+  font-size: 15px;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  margin-right: -3px;
+  margin-top: -3px;
+}
+.eliminar-campo-experiencia{
+  float: right;
+  cursor: pointer;
+  position: relative;
+  top: -12px;
+  right: 8px;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: white;
+
+}
+.eliminar-campo-experiencia:hover{
+  background-color: #f44336;
+  font-size: 15px;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  margin-right: -3px;
+  margin-top: -3px;
+}
+//Lo mismo q .campo-experiencia
+.campo-formacion{
+  border: thin solid rgb(149, 165, 166);
+  padding: 5px 5px 0 5px;
+  margin-bottom: 10px;
+  margin-top: 18px;
+  border-radius: 8px;
+}
+.eliminar-campo-correo,
+.eliminar-campo-nombre,
+.eliminar-campo-telefono,
+.eliminar-campo-sitio,
+.eliminar-campo-foto{
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.eliminar-campo-correo:hover,
+.eliminar-campo-nombre:hover,
+.eliminar-campo-telefono:hover,
+.eliminar-campo-sitio:hover,
+.eliminar-campo-foto:hover{
+  background-color: #f44336;
+  font-size: 15px;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.campo-plano{
+  border-radius: 0;
+  //margin-top: 10px;
+  margin-bottom: 15px;
+
+}
+.eliminar-campo{
+  //border: 1px solid red;
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.eliminar-campo:hover{
+  background-color: #f44336;
+  font-size: 15px;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.icon-user{
+  //border: 1px solid red;
+  padding-top: 10px;
+}
+.campo-experiencia{
+  border: thin solid rgb(149, 165, 166);
+  padding: 5px 5px 0 5px;
+  margin-bottom: 10px;
+  margin-top: 18px;
+  border-radius: 8px;
+}
+//estilos de mano derecha
+.stop-phone, .stop-email, .stop-web, .stop-name, .stop-photo, .stop-experiencia, .stop-formacion{
+  display: none;
+}
+//**********************************************************//
+//*********ESTILOS PARA LA VISTA PREVIA DE CURRICULUM*******//
+.curriculum{
+  background-color: white;
+  //height: 100%;
+}
+//.row{
+//  border: 1px solid blue;
+//}
+//.col-md-1,.col-md-10, .col-md-4, .col-md-8{
+//  border: 1px solid red;
+//}
+//
+//.container{
+//  border: 1px solid orange;
+//}
+.curriculum{
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+#sup-izq{
+  width: 100%;
+  height: 75px;
+  background-color: #730E15;
+}
+#separador-sup{
+
+  width: 100%;
+  background-color: #730E15;
+  margin-top: 2px;
+  padding-top: 2px;
+}
+.nombre{
+  //border: 1px solid red;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #333333;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 75px;
+  text-transform: uppercase;
+}
+#container-photo{
+  max-height: 300px;
+  overflow-y: hidden;
+}
+.photo-resume{
+  width: 100%;
+}
+.inf-izq{
+  background-color: #730E15;
+
+}
+.inf-izq > span {
+  color: white;
+  padding: 15px;
+  margin: 0;
+
+  //height: 2500px;
+}
+.inf-izq > p, .inf-izq > a{
+  display: inline;
+  color: #DADADA;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+
+}
+#separador-inf{
+  width: 100%;
+  background-color: #730E15;
+  padding-top: 2px;
+  position: relative;
+  bottom: 5px;
+}
+.encabezado-cv{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 36px;
+}
+.texto-fecha{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+}
+.texto-trabajo{
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 26px;
+}
+.texto-empresa{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 26px;
+}
+.texto-descripcion{
+  text-align: justify;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
+}
+.space{
+  //border: 1px solid red;
+  padding-right: 10px;
+}
+
+#sup-der{
+  float: right;
+  margin-right: 15px;
+}
+
+.link-edit{
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(123,23,23,0.3);
+  height: 55px;
+  padding: 18px;
+  color: #730E15;
+}
+#link-edit{
+  text-decoration: none;
+  color: #730E15;
+}
+#link-edit:hover{
+  color: white;
+}
+//--------------ESTILOS PARA EDITAR--------------//
+#img-prev{
+  display: none;
+  width: 80px;
+  height:80px;
+
+  background-size: cover;
+  padding: 0;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  //background-image: url('/assets/missing.png');
+  //background-image: url(image-path('missing.png'));
+  border: 0;
+}
+.img-original{
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  border: 0;
+  position: relative;
+  right: -10px;
+}
+#imagePreview{
+  //border: 1px solid blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ESTILOS PARA EL BUSCADOR
 
 .typeahead,
 .tt-query,
@@ -43,7 +460,7 @@
   margin: 12px 0;
   padding: 8px 0;
   background-color: #fff;
-  border: 1px solid #ccc;
+  //border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -159,7 +576,7 @@ html, body {
 /****************************************************************************************************************/
 
 body{
-  padding-top: 50px;
+  padding-top: 57px;
 }
 
 

@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :fans, through: :passive_relationships
 
+  has_many :job_vacancies
+
 
   has_secure_password
 
@@ -46,4 +48,37 @@ class User < ActiveRecord::Base
     Post.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
   end
+
+
+  def get_vacancies
+    job_vacancies = Array.new
+    all_job_vacancies = JobVacancy.all
+    all_job_vacancies.each do |job_vacancy|
+      unless self.resume.nil?
+        unless self.resume.educations.nil?
+          self.resume.educations.each do |education|
+            if education.degree_name == job_vacancy.education
+              job_vacancies.push(job_vacancy)
+            end
+          end
+        end
+      end
+    end
+    job_vacancies
+  end
+
+  def get_candidates
+    candidates = Array.new
+    self.job_vacancies.each do |vacancy|
+      vacancy.applicants.each do|applicant|
+        candidates.push(applicant)
+      end
+    end
+    candidates
+  end
+
+  def get_vacancies_applied
+    Applicant.where(:applicant_id => self.id)
+  end
 end
+

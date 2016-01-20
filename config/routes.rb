@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'resumes/new'
+  resources :job_vacancies
+  resources :applicants
 
 # UNA RUTA PARA AUTOCOMPLETE y SERACH
   get '/search' => 'searches#search', as: :search
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   delete '/unfollow' => 'relationships#destroy', as: :unfollow
 
   resources :resumes
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

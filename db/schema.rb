@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116171508) do
+ActiveRecord::Schema.define(version: 20160118182629) do
+
+  create_table "applicants", force: :cascade do |t|
+    t.integer  "job_vacancy_id"
+    t.integer  "applicant_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "applicants", ["job_vacancy_id"], name: "index_applicants_on_job_vacancy_id"
 
   create_table "educations", force: :cascade do |t|
     t.date     "start_date"
@@ -47,6 +56,17 @@ ActiveRecord::Schema.define(version: 20160116171508) do
   end
 
   add_index "experiences", ["resume_id"], name: "index_experiences_on_resume_id"
+
+  create_table "job_vacancies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "state"
+    t.string   "education"
+    t.integer  "years_of_experience"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "job_vacancies", ["user_id"], name: "index_job_vacancies_on_user_id"
 
   create_table "phones", force: :cascade do |t|
     t.integer  "number"

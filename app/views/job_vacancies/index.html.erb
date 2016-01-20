@@ -1,0 +1,36 @@
+<style>
+  .fila-vacantes{
+      padding: 5px;
+  }
+  .contenedor-vacantes{
+      background-color: white;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+  }
+</style>
+<div class="container">
+  <div class="row ">
+    <div class="col-md-9  contenedor-vacantes">
+      <div class="row fila-vacantes">
+        <div class="col-md-4"><h4>PERSONAL REQUERIDO</h4></div>
+        <div class="col-md-4"><h4>EXPERIENCIA</h4></div>
+        <div class="col-md-4"></div>
+      </div>
+      <% @job_vacancies.each do |vacancy| %>
+          <div class="row fila-vacantes">
+            <div class="col-md-4"><p><%= vacancy.education %></p></div>
+            <div class="col-md-2"><%= vacancy.years_of_experience %></div>
+            <div class="col-md-2"><%= link_to 'EDITAR', edit_job_vacancy_path(vacancy.id), class: 'btn btn-success btn-block' %></div>
+            <div class="col-md-2"><%= link_to 'MOSTRAR', job_vacancy_path(vacancy.id), class: 'btn btn-success btn-block' %></div>
+            <div class="col-md-2"><%= link_to 'ELIMINAR', job_vacancy_path(vacancy.id), method: :delete,  class: 'btn btn-danger btn-block' %></div>
+          </div>
+          <hr>
+      <% end %>
+      <%= link_to 'Contratar', new_job_vacancy_path, class: 'btn btn-primary' %>
+
+    </div>
+    <div class="col-md-3">
+   </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  state: false
+  education: MyString
+  years_of_experience: 1
+
+two:
+  user_id: 
+  state: false
+  education: MyString
+  years_of_experience: 1

@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_for @job_vacancy do |f| %>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :years_of_experience, 'Años de experiencia' %>
+          <%= f.number_field :years_of_experience, class: 'form-control' %>
+          <%= f.label :education, 'Educación' %>
+          <%= f.text_field :education, class: 'form-control' %>
+          <%= f.submit 'Ofertar empleo', class: 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
+    <%= link_to 'Atras', job_vacancies_path%>
+</div>

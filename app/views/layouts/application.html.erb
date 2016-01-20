@@ -25,13 +25,35 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "#{current_user.name}", profile_path(current_user.name) %></li>
         <li><%= link_to 'Publicaciones', publications_path %></li>
-        <li><a href="#">Notificaciones</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Ofertas <span class="badge"><%= current_user.get_vacancies.count - current_user.get_vacancies_applied.count%></span></a>
+          <ul class="dropdown-menu">
+            <% current_user.get_vacancies.each do |vacancy| %>
+                <% if Applicant.not_applied?(vacancy.id, current_user.id) %>
+                    <li><%= link_to User.find(vacancy.user_id).name , job_vacancy_path(vacancy.id) %></li>
+                <% end %>
+            <% end %>
+            <li role="separator" class="divider"></li>
+            <li><a href="">Todos las ofertas</a></li>
 
-        <li><%= link_to 'Terminar sesion', sign_out_path, method: :delete %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Postulantes <span class="badge"><%= current_user.get_candidates.count %></span></a>
+          <ul class="dropdown-menu">
+            <% current_user.get_candidates.each do |candidate| %>
+                <li><%= link_to candidate.applicant_name, resume_path(candidate.applicant_resume_id), :class =>'link-postulante' %></li>
+            <% end %>
+            <li role="separator" class="divider"></li>
+            <li><a href="">Todos los postulantes</a></li>
+          </ul>
+        </li>
+
+        <li><%= link_to 'Terminar sesión', sign_out_path, method: :delete %></li>
       </ul>
-      <%= form_tag search_path, id: "formulario", class: 'navbar-form navbar-left', method: :get do %>
+      <%= form_tag search_path, id: 'formulario', class: 'navbar-form navbar-left', method: :get do %>
           <div class="form-group">
-            <%= text_field_tag :query, params[:query],  class: 'form-control typeahead', placeholder:"Buscar personas" %>
+            <%= text_field_tag :query, params[:query],  class: 'form-control typeahead', placeholder: 'Buscar personas' %>
           </div>
           <%= submit_tag 'Search', class: 'btn btn-primary' %>
 
@@ -69,4 +91,5 @@
 //        alert('franz');
         document.getElementById("formulario").submit();
     });
+
 </script>

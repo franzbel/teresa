@@ -514,6 +514,7 @@ label[for=resume_photos_attributes_0_photo]:hover{
 .format-text{
   text-align: justify;
   text-justify: inter-word;
+  padding: 12px;
 }
 
 .img-post{
@@ -594,7 +595,7 @@ body{
 
 }
 #container-cover{
-  max-height: 330px;
+  height: 330px;
   width: 100%;
   overflow: hidden;
   padding: 0;
@@ -722,9 +723,32 @@ body{
 .container-body > #img-avatar{
   max-width: 50px;
 }
+.barra-enviar{
+  background-color: white;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 1px;
 
+}
+
+.btn{
+  border-radius: 0;
+}
+.col-md-3 button{
+  float: right;
+}
+.col-md-9 span{
+  //border: 1px solid red;
+  margin-left: -15px;
+}
+
+.cont-btn-publicar{
+ margin-right: 0;
+ padding-right: 0;
+}
 .container-body{
-  margin: 15px;
+  //margin: 15px;
+  margin-top: 15px;
   background-color: aliceblue;
   border-radius: 8px;
   border: 1px solid blanchedalmond;
@@ -824,4 +848,12 @@ body{
 .contenedor-sugerencia p{
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
+}
+////////Links para postulante
+
+.dropdown-menu{
+  margin-top: 6px!important;
+}
+.dropdown-menu li{
+  width: 250px;
 }

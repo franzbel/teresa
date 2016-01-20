@@ -27,7 +27,9 @@
             <div class="col-md-4">
               <div class="inf-izq">
                 <div id="container-photo">
-                  <%= image_tag @resume.photos.first.photo.url(:resume), class: 'photo-resume'%>
+                  <% unless @resume.photos.first.nil? %>
+                      <%= image_tag @resume.photos.first.photo.url(:resume), class: 'photo-resume'%>
+                  <% end %>
                 </div>
 
                 <div id="separador-inf"></div>

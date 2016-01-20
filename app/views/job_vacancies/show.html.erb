@@ -1,0 +1,19 @@
+<div class="container">
+  <strong>Experiencia:</strong>
+  <%= @job_vacancy.years_of_experience %> <br>
+  <strong>Formación:</strong>
+  <%= @job_vacancy.education %> <br>
+  <% if current_user.id == @job_vacancy.user_id  %>
+      <%= link_to 'Editar', edit_job_vacancy_path(@job_vacancy) %> |
+      <%= link_to 'Lista de ofertados', job_vacancies_path %>  <br>
+  <% end %>
+  <% if current_user.id != @job_vacancy.user_id %>
+      <% if Applicant.not_applied?(@job_vacancy.id, current_user.id) %>
+          <%= form_for Applicant.new do |f| %>
+              <%= f.hidden_field :job_vacancy_id, value: @job_vacancy.id %>
+              <%= f.submit 'Aplicar'%>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>
+

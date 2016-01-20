@@ -69,19 +69,36 @@
 <div class="row">
   <div class="col-md-3">
     <div class="contenedor-enlaces">
-      <%= link_to '<span class="glyphicon glyphicon-briefcase"></span> Curriculum'.html_safe, new_resume_path ,class: 'enlaces-perfil'%>
+      <% if current_user.resume.nil? %>
+        <%= link_to '<span class="glyphicon glyphicon-briefcase"></span> Crear Curriculum'.html_safe, new_resume_path ,class: 'enlaces-perfil'%>
+      <% else %>
+        <%= link_to '<span class="glyphicon glyphicon-pencil"></span> Editar Curriculum'.html_safe, resume_path(current_user.resume.id) ,class: 'enlaces-perfil'%>
+      <% end %>
+      <%= link_to '<span class="glyphicon glyphicon-tree-conifer"></span> Contratar'.html_safe, job_vacancies_path ,class: 'enlaces-perfil'%>
       <%= link_to '<span class="glyphicon glyphicon-picture"></span> Fotos'.html_safe, new_resume_path ,class: 'enlaces-perfil'%>
-      <%= link_to '<span class="glyphicon glyphicon-tree-conifer"></span> Otros'.html_safe, new_resume_path ,class: 'enlaces-perfil'%>
+
     </div>
   </div>
   <div class="col-md-6">
     <%= form_for :post, url: new_post_path do |f| %>
-        <div class="form-group">
-          <%= f.text_area(:body, class: "form-control", placeholder: 'How do you feel?') %>
-          <label for="post_image"><span class="glyphicon glyphicon-camera"></span> Adjuntar una imagen</label>
-          <%= f.file_field :image, class: 'inputfile' %>
-        </div>
-        <%= f.submit('Publicar', class: "btn btn-primary") %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_area(:body, class: "form-control", placeholder: 'How do you feel?', rows: 4) %>
+      </div>
+    </div>
+    <div class="row barra-enviar">
+      <div class="col-md-9 col-sm-8 col-xs-4">
+        <label for="post_image">
+            <span class="glyphicon glyphicon-camera btn btn-primary" aria-hidden="true"></span>
+        </label>
+        <%= f.file_field :image, class: 'inputfile' %>
+      </div>
+      <div class="col-md-3  col-sm-4  col-xs-8 cont-btn-publicar">
+        <button type="submit" class="btn btn-primary">
+          Publicar <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
     <% end %>
     <% @posts.each do |post| %>
         <div class="container-body ">

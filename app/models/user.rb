@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
   has_one :resume
   searchkick autocomplete: ['name']
 
@@ -76,9 +77,72 @@ class User < ActiveRecord::Base
     end
     candidates
   end
-
+  # METODOS PARA EL MAILBOXER
   def get_vacancies_applied
     Applicant.where(:applicant_id => self.id)
   end
+
+  def mailboxer_email(object)
+    self.email
+  end
+  def mailboxer_name
+    self.name
+  end
+
+  def get_last_different_sender(conversation)
+    if conversation.last_sender == self
+      conversation.messages.reverse_each do |message|
+        unless message.sender_id == self.id
+          return User.find(message.sender_id)
+        end
+      end
+    end
+    conversation.last_sender
+  end
+
+  def number_of_active_participants(conversation)
+    participants = Array.new
+    conversation.messages.each do |message|
+      participants.push(message.sender_id)
+    end
+    participants.uniq.count
+  end
+
+  # El ultimo en participar va primero, y no consideramos al current_user
+  def active_participants(conversation)
+    participants = Array.new
+    conversation.messages.each do |message|
+      participants.push(User.find(message.sender_id))
+    end
+    participants.reverse.uniq - [self]
+  end
+  #Obtenemos todos los mensajes, de todas las conversaciones que se encuentren sin leer
+  def get_all_unread
+    number = 0
+    self.mailbox.inbox.each do |conversation|
+      conversation.messages.each do |message|
+        if message.is_unread?(self)
+          number +=1
+        end
+      end
+    end
+    number
+  end
+  #Obtenemos todos los mensajes no leidos de una conversación
+  def get_unread(conversation)
+    number = 0
+    conversation.messages.each do|message|
+      if message.is_unread?(self)
+        number += 1
+      end
+    end
+    number
+  end
+  # def is_equal(user)
+  #   if user == self
+  #     return true
+  #   end
+  #   false
+  # end
 end
 

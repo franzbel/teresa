@@ -1,0 +1,13 @@
+<%= form_tag private_messages_path, remote: :true, method: :post, id:'send-msg' do %>
+    <div class="form-group form-msg">
+      <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control chosen-it form-msg', :data => {:placeholder => 'Para'}, required: true %>
+    </div>
+    <div class="form-group form-msg">
+
+      <%= text_field_tag 'message[subject]', nil, class: 'form-control form-msg', required: true, placeholder:'Asunto' %>
+    </div>
+    <div class="form-group form-msg">
+      <%= text_area_tag 'message[body]', nil, cols: 3, rows: 16, class: 'form-control form-msg', required: true %>
+    </div>
+    <%= submit_tag 'Enviar', class: 'btn btn-primary' %>
+<% end %>

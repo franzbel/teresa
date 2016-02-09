@@ -1,0 +1,136 @@
+<li class="list-group-item clearfix email-item">
+  <div class="row">
+
+    <div class="col-md-7">
+      <% if @box == 'bandeja' %>
+        <% if current_user.active_participants(conversation).count == 1 %>
+          <% if conversation.is_unread?(current_user)%>
+              <span class="glyphicon glyphicon-envelope is_unread"></span>
+          <% else %>
+              <span class="glyphicon glyphicon-inbox is_read"></span>
+          <% end %>
+          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
+          <%= current_user.active_participants(conversation)[0].name %>
+        <% end %>
+        <% if current_user.active_participants(conversation).count == 2 %>
+          <% if conversation.is_unread?(current_user)%>
+            <span class="glyphicon glyphicon-envelope is_unread"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-inbox is_read"></span>
+          <% end %>
+          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
+          <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
+          <%= current_user.active_participants(conversation)[0].name %>,
+          <%= current_user.active_participants(conversation)[1].name %>
+        <% end %>
+        <% if current_user.active_participants(conversation).count == 3 %>
+          <% if conversation.is_unread?(current_user)%>
+            <span class="glyphicon glyphicon-envelope is_unread"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-inbox is_read"></span>
+          <% end %>
+          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
+          <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
+          <%= image_tag current_user.active_participants(conversation)[2].avatar.url, class: 'img-participant img-participant-third center-block' %>
+          <%= current_user.active_participants(conversation)[0].name %>,
+          <%= current_user.active_participants(conversation)[1].name %>,
+          <%= current_user.active_participants(conversation)[2].name %>
+        <% end %>
+        <% if current_user.active_participants(conversation).count > 3 %>
+          <% if conversation.is_unread?(current_user)%>
+            <span class="glyphicon glyphicon-envelope is_unread"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-inbox is_read"></span>
+          <% end %>
+            <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
+            <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
+            <span class="img-participant-others">+<%= current_user.active_participants(conversation).count-2 %></span>
+            <%= current_user.active_participants(conversation)[0].name %>,
+            <%= current_user.active_participants(conversation)[1].name %>,
+            Otros
+        <% end %>
+      <% end %>
+
+      <% if @box == 'enviados' %>
+          <% if conversation.participants.count == 2 %>
+              <span class="glyphicon glyphicon-send is_send"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>
+          <% end %>
+          <% if conversation.participants.count  == 3 %>
+              <span class="glyphicon glyphicon-send is_send"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>
+          <% end %>
+          <% if conversation.participants.count  == 4 %>
+              <span class="glyphicon glyphicon-send is_send"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[2].avatar.url), class: 'img-participant img-participant-third center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>,
+              <%= (conversation.participants - [conversation.originator])[2].name %>
+          <% end %>
+          <% if conversation.participants.count   > 4 %>
+              <span class="glyphicon glyphicon-send is_send"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <span class="img-participant-others">+<%= (conversation.participants - [conversation.originator]).count-2 %></span>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>,
+              Otros
+          <% end %>
+      <% end %>
+      <% if @box == 'papelera' %>
+          <% if conversation.participants.count == 2 %>
+              <span class="glyphicon glyphicon-trash is_trashed"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>
+          <% end %>
+          <% if conversation.participants.count  == 3 %>
+              <span class="glyphicon glyphicon-trash is_trashed"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>
+          <% end %>
+          <% if conversation.participants.count  == 4 %>
+              <span class="glyphicon glyphicon-trash is_trashed"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[2].avatar.url), class: 'img-participant img-participant-third center-block' %>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>,
+              <%= (conversation.participants - [conversation.originator])[2].name %>
+          <% end %>
+          <% if conversation.participants.count   > 4 %>
+              <span class="glyphicon glyphicon-trash is_trashed"></span>
+              <%= image_tag ((conversation.participants - [conversation.originator])[0].avatar.url), class: 'img-participant img-participant-first center-block' %>
+              <%= image_tag ((conversation.participants - [conversation.originator])[1].avatar.url), class: 'img-participant img-participant-second center-block' %>
+              <span class="img-participant-others">+<%= (conversation.participants - [conversation.originator]).count-2 %></span>
+              <%= (conversation.participants - [conversation.originator])[0].name %>,
+              <%= (conversation.participants - [conversation.originator])[1].name %>,
+              Otros
+          <% end %>
+      <% end %>
+
+    </div>
+
+    <!--<div class="col-md-2 fix-vertical-align"><%= link_to conversation.subject, conversation_path(conversation) %></div>-->
+    <div class="col-md-2 fix-vertical-align"><%= link_to conversation.subject, conversation_path(conversation), remote: true, class: 'subject' %></div>
+    <div class="col-md-2 fix-vertical-align"><%= conversation.created_at.strftime('%-d %B %Y') %></div>
+    <div class="col-md-1  fix-vertical-align">
+      <div class="btn-group-vertical">
+        <% if conversation.is_trashed?(current_user) %>
+            <%= link_to '<i class="fa fa-reply icon-restore"></i><span class="glyphicon glyphicon-trash icon-restore"></span>'.html_safe, restore_conversation_path(conversation), method: :post %>
+        <% else %>
+            <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, conversation_path(conversation), method: :delete, data: {confirm: 'Are you sure?'}, class: 'icon-trash'%>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</li>

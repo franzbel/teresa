@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+@import 'chosen';
+@import 'mCustomScrollbar';
 //**********ESTILOS PARA EL FORMULARIO DE CURRICULUM********//
 //**************ESTILOS PARA LOS BOTONES DEL MENU***********//
 .item-menu{
@@ -419,19 +420,25 @@ label[for=resume_photos_attributes_0_photo]:hover{
 
 
   // ESTILOS PARA EL BUSCADOR
-
+.tt-input{
+  border-radius: 0!important;
+  width: 100%!important;
+  padding: 1px!important;
+  //height: 40px!important;
+}
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 396px;
-  height: 40px;
-  padding: 8px 12px;
-  font-size: 24px;
+  width: 100%;
+  height: 34px;
+  padding: 1px;
+  //padding: 8px 12px;
+  font-size: 18px;
   line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
+  //border: 2px solid #ccc;
+  //-webkit-border-radius: 8px;
+  //-moz-border-radius: 8px;
+  //border-radius: 8px;
   outline: none;
 }
 
@@ -456,15 +463,15 @@ label[for=resume_photos_attributes_0_photo]:hover{
 }
 
 .tt-menu {
-  width: 396px;
+  width: 100%;
   margin: 12px 0;
   padding: 8px 0;
   background-color: #fff;
   //border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
+  //-webkit-border-radius: 8px;
+  //-moz-border-radius: 8px;
+  //border-radius: 8px;
   -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
@@ -577,7 +584,7 @@ html, body {
 /****************************************************************************************************************/
 
 body{
-  padding-top: 57px;
+  padding-top: 50px;
 }
 
 
@@ -595,7 +602,8 @@ body{
 
 }
 #container-cover{
-  height: 330px;
+
+  max-height: 350px;
   width: 100%;
   overflow: hidden;
   padding: 0;
@@ -621,6 +629,7 @@ body{
   height: 70px;
   /*margin: 8px;*/
   border-radius: 8px;
+  background-size: contain;
 
 }
 #sugerencia-amistad{
@@ -849,11 +858,314 @@ body{
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
 }
-////////Links para postulante
+
+//-----------------------------Layout
+.img-navbar{
+  //border: 1px solid red;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+
+}
+.prueba{
+  padding: 5px!important;
+  margin: 0!important;
+}
+
+
+//---------------------------BANDEJA DE ENTRADA
+.nav-pills > li >a{
+  border-radius: 0;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: white;
+  border: thin solid lightgray;
+}
+
+.msg-title{
+  background-color: #337ab7;
+  color: white;
+  padding: 15px 15px;
+  //color: #333333;
+  margin: 0 0 2px 0;
+  //border-radius: 5px;
+ }
+.msg-container{
+  padding: 15px;
+  border-radius: 8px;
+}
+.item-msg:hover{
+  border-left: 5px solid #337ab7;
+}
+.list-group-item{
+  border-radius: 0!important;
+}
+.email-item:hover{
+  border-left: 3px solid #337ab7;
+  background-color: rgba(#337ab7,0.1);
+}
+//.email-item{
+//  border-right: 3px solid green;
+//
+//}
+.item-msg-mailbox-active{
+  border-left: 5px solid #337ab7;
+}
+
+.paginacion{
+  text-align: center;
+  //border: 1px solid red;
+  margin-top: -20px;
+  background-color: white;
+}
+.pagination{
+  padding-top: 3px;
+  margin: 0 auto;
+}
+.btn-danger{
+
+}
+.fix-vertical-align{
+   padding-top: 8px;
+}
+
+.icon-trash{
+  margin: 4px 0 0 0;
+  color: #dd4b39;
+  //border-bottom: 3px solid brown;
+}
+.icon-trash:hover{
+  margin: 4px 0 0 0;
+  border-bottom: 3px solid brown;
+}
+
+
+.is_send{
+  color: #00c0ef;
+  font-size: 1.5em;
+  position: relative;
+  top: 5px;
+  padding-right: 10px;
+
+}
+//-------estadisticas de mensjes
+.info-box {
+  display: block;
+  min-height: 70px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.info-box-icon {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  display: block;
+  float: left;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  font-size: 45px;
+  line-height: 70px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.bg-green{
+  color: #fff !important;
+  background-color: #008d4c !important;
+}
+.bg-yellow{
+  color: #fff !important;
+  background-color: #f39c12 !important;
+}
+.bg-red{
+  color: #fff !important;
+  background-color: #dd4b39 !important;
+}
+.bg-aqua{
+  color: #fff !important;
+  background-color: #00c0ef !important;
+}
+
+.info-box-content {
+  padding: 5px 10px;
+  margin-left: 70px;
+}
+.info-box-text {
+  text-transform: uppercase;
+}
+.info-box-number {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+}
+//------------------Bandeja de salida
+.icon-restore{
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+  //border: 1px solid royalblue;
+  float: right;
+}
+//------------------Bandeja de papelera
+.empty-trash{
+  float: right;
+  margin-right: -15px;
+  margin-top: -15px;
+  //width: 100%;
+}
+.empty-trash>a{
+  padding-bottom: 21px;
+  padding-top: 15px;
+}
+//-------------------Formulario de mensaje
+.form-msg{
+  margin: 1px 0!important;
+  //border: 1px solid royalblue;
+  border-radius: 0;
+}
+//------------------Enviados
+.is_read{
+  color: darkgreen;
+  font-size: 1.5em;
+  position: relative;
+  top: 5px;
+  padding-right: 10px;
+}
+.is_unread{
+  color: orange;
+  font-size: 1.5em;
+  position: relative;
+  top: 5px;
+  padding-right: 10px;
+}
+.is_trashed{
+  color: #dd4b39;
+  font-size: 1.5em;
+  float: left;
+  top: 10px;
+  padding-right: 15px;
+}
+
+.img-participant-first{
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+.img-participant-second{
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+.img-participant-third{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+.participant-names{
+  //border: 1px solid red;
+  display: inline;
+  float: right;
+  list-style-type: none;
+}
+.img-participant-others{
+  font-size: 0.8em;
+  border-radius: 50%;
+  padding: 8px;
+  margin: 0;
+  display: inline;
+  background-color: #333333;
+  color: white;
+}
+.container-mailbox{
+  //display: none;
+}
+//-----------contenido del msg
+.messages {
+max-height: 400px;
+overflow-y: auto;
+margin-bottom: 1em;
+margin-top: 1em;
+}
+.contenedor-responder{
+background-color: white;
+padding: 15px;
+margin-top: 15px;
+border-radius: 8px;
+}
+.messages > span{
+  font-size: 0.8em;
+}
+
+//-----conversacion
+.contenedor-responder{
+  //border: 1px solid blue;
+  margin-top: 0;
+  border-radius: 0;
+}
+
+////////Links dropdown para correo
 
 .dropdown-menu{
-  margin-top: 6px!important;
+  //margin-top: 6px!important;
 }
 .dropdown-menu li{
-  width: 250px;
+  width: 350px;
+  font-size: 0.8em;
+  //border: 1px solid red;
+}
+.dropdown-menu li a{
+  width: 350px;
+  font-size: 0.9em;
+  //border: 1px solid blue;
+  display: block;
+  text-decoration: none;
+  margin-left: 15px;
+  margin-bottom: 3px;
+}
+.dropdown-menu li a:hover{
+  width: 350px;
+  font-size: 0.9em;
+  display: block;
+  text-decoration: none;
+  margin-left: 15px;
+  margin-bottom: 3px;
+  border-left: 3px solid #337ab7;
+}
+.ver-todos{
+  text-align: center;
+}
+.ver-todos>a{
+  margin-left: 0!important;
+}
+.inbox-notify{
+  background: rgba(223,0,0,0.6);
+  position:relative;
+  top: -12px;
+  left: 2px;
+}
+.dropdown-menu-inbox{
+  max-height: 254px;
+  overflow-y: auto;
+}
+.ver-todos > a:hover{
+  color: #337ab7!important;
+  border-left: 0!important;
+}
+
+//----------------------------------fix-message after create
+#messages{
+  display: none;
 }

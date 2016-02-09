@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="development" uuid="9703bcc2-9386-4cc4-88e9-5df65353f6a3" />
-    <data-source name="development [2]" uuid="61d47e9e-5a2d-4cda-b137-1e24aa3f86d5" />
-    <data-source name="Rails teresa: development" uuid="3f6dad65-75b1-4077-b38c-79c276e18fae" />
-    <data-source name="Rails teresa: test" uuid="575ab0c5-acb0-4200-86d0-2f04f4eef3b4" />
-    <data-source name="development [3]" uuid="a82e3a61-1d1e-4328-8bb1-47774f11af7b" />
-    <data-source name="development [4]" uuid="f4c1f4ed-8823-4205-a371-aee0b0063af6" />
-    <data-source name="development [5]" uuid="bbe6e272-19c4-4f9c-9dcf-8141b6ab4766" />
+    <data-source name="development" uuid="0fe54f92-c80a-4e1f-acc9-b78352ed5edb" />
   </component>
 </project>

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def sign_out
     logout
-    redirect_to home_path
+    redirect_to root_path
 
   end
 

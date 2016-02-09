@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  scope 'private' do
+    resources :messages, only: [:index, :new, :create], :as => 'private_messages'
+  end
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
+
   resources :job_vacancies
   resources :applicants
 
@@ -10,7 +23,8 @@ Rails.application.routes.draw do
 
   get '/publications' => 'publications#index', as: :publications
 
-  get    '/'         => 'users#home',     as: :home
+  # get    '/'         => 'users#home',     as: :home
+  root 'users#home'
   post   '/sign_up'  => 'users#sign_up',  as: :sign_up
   post   '/sign_in'  => 'users#sign_in',  as: :sign_in
   delete '/sign_out' => 'users#sign_out', as: :sign_out

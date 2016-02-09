@@ -14,7 +14,11 @@
 //= require jquery_ujs
 
 //= require bootstrap
-
+//= require jquery.turbolinks
+//= require chosen-jquery
+//= require messages
 //= require turbolinks
 //= require typeahead.bundle
+//= require mCustomScrollbar
+//= require mCustomScrollbar.concat.min
 //= require_tree .

@@ -23,7 +23,7 @@
 
 <div id="container-avatar">
   <div class="hovereffect">
-    <%= image_tag @user.avatar.url, class: 'img-responsive', id: 'img-avatar' %>
+    <%= image_tag @user.avatar.url, id: 'img-avatar' %>
     <% if current_user.name == @user.name %>
         <div class="overlay">
           <h2>Actualizar foto de perfil</h2>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 contenedor-responder">
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= @conversation.subject %></div>
+        <div class="panel-body">
+          <div class="messages content" >
+            <% @conversation.receipts_for(current_user).each do |receipt| %>
+                <% message = receipt.message %>
+                <%= image_tag message.sender.avatar.url, class: 'img-participant img-participant-first center-block' %>
+                <%= link_to message.sender.name, profile_path(message.sender.name) %>
+                <span>(<%= message.created_at.strftime('%-d %B %Y, %H:%M:%S') %>)</span><br>
+                <%= message.body %>
+                <hr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= form_tag reply_conversation_path(@conversation), method: :post, id: 'send-reply' do %>
+          <div class="form-group content">
+            <div class="textarea-wrapper">
+              <%= text_area_tag 'body', nil, cols: 3, rows: 6, class: 'form-control', placeholder: 'Responder...', required: true %>
+              <div class="textarea-clone"></div>
+            </div>
+          </div>
+          <%= submit_tag 'Responder', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function() {
+//        $.mCustomScrollbar.defaults.scrollButtons.enable=true;
+//        $.mCustomScrollbar.defaults.axis="y";
+        $('.content').mCustomScrollbar({
+            theme:"dark"
+        });
+//        $("body").mCustomScrollbar({
+//            theme:"dark"
+//        });
+
+    });
+</script>

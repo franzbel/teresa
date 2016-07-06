@@ -10,126 +10,9 @@
 </head>
 <body>
 <% if logged_in? %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'UCB', publications_path, class: 'navbar-brand' %>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "#{current_user.name}", profile_path(current_user.name) %></li>
-        <li><%= link_to 'Publicaciones', publications_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Ofertas <span class="badge"><%= current_user.get_vacancies.count - current_user.get_vacancies_applied.count%></span></a>
-          <ul class="dropdown-menu">
-            <% current_user.get_vacancies.each do |vacancy| %>
-                <% if Applicant.not_applied?(vacancy.id, current_user.id) %>
-                    <li><%= link_to User.find(vacancy.user_id).name , job_vacancy_path(vacancy.id) %></li>
-                <% end %>
-            <% end %>
-            <li role="separator" class="divider"></li>
-            <li><a href="">Todos las ofertas</a></li>
-
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Postulantes <span class="badge"><%= current_user.get_candidates.count %></span></a>
-          <ul class="dropdown-menu">
-            <% current_user.get_candidates.each do |candidate| %>
-                <li><%= link_to candidate.applicant_name, resume_path(candidate.applicant_resume_id), :class =>'link-postulante' %></li>
-            <% end %>
-            <li role="separator" class="divider"></li>
-            <li><a href="">Todos los postulantes</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span class="badge badge-notify inbox-notify"><%= current_user.get_all_unread %></span></a>
-          <ul class="dropdown-menu">
-            <div class=" dropdown-menu-inbox content">
-            <% current_user.mailbox.inbox.each do |conversation| %>
-                <% if conversation.is_unread?(current_user) %>
-                <li>
-                  <% if current_user.active_participants(conversation).count == 1 %>
-                      <%= link_to conversation_path(conversation) do %>
-                          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
-                          <%= current_user.active_participants(conversation)[0].name %>
-                          (<%= conversation.created_at.strftime('%-d %B %Y') %>)
-                          <span class="badge badge-notify inbox-notify"><%= current_user.get_unread(conversation) %></span>
-                      <% end %>
-                  <% end %>
-                  <% if current_user.active_participants(conversation).count == 2 %>
-                      <%= link_to conversation_path(conversation) do %>
-                          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
-                          <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
-                          <%= current_user.active_participants(conversation)[0].name %>,
-                          <%= current_user.active_participants(conversation)[1].name %>
-                          (<%= conversation.created_at.strftime('%-d %B %Y') %>)
-                          <span class="badge badge-notify inbox-notify"><%= current_user.get_unread(conversation) %></span>
-                      <% end %>
-                  <% end %>
-                  <% if current_user.active_participants(conversation).count == 3 %>
-                      <%= link_to conversation_path(conversation) do %>
-                          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
-                          <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
-                          <%= image_tag current_user.active_participants(conversation)[2].avatar.url, class: 'img-participant img-participant-third center-block' %>
-                          <%= current_user.active_participants(conversation)[0].name %>,
-                          <%= current_user.active_participants(conversation)[1].name %>,
-                          <%= current_user.active_participants(conversation)[2].name %>
-                          (<%= conversation.created_at.strftime('%-d %B %Y') %>)
-                          <span class="badge badge-notify inbox-notify"><%= current_user.get_unread(conversation) %></span>
-                      <% end %>
-                  <% end %>
-                  <% if current_user.active_participants(conversation).count > 3 %>
-                      <%= link_to conversation_path(conversation) do %>
-                          <%= image_tag current_user.active_participants(conversation)[0].avatar.url, class: 'img-participant img-participant-first center-block' %>
-                          <%= image_tag current_user.active_participants(conversation)[1].avatar.url, class: 'img-participant img-participant-second center-block' %>
-                          <span class="img-participant-others">+<%= current_user.active_participants(conversation).count-2 %></span>
-                          <%= current_user.active_participants(conversation)[0].name %>,
-                          <%= current_user.active_participants(conversation)[1].name %>,
-                          Otros
-                          (<%= conversation.created_at.strftime('%-d %B %Y') %>)
-                          <span class="badge badge-notify inbox-notify"><%= current_user.get_unread(conversation) %></span>
-                      <% end %>
-                  <% end %>
-                </li>
-                <% end %>
-            <% end %>
-            </div>
-            <li role="separator" class="divider"></li>
-            <li class="ver-todos"><%= link_to 'Ver Todos', conversations_path %></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle prueba" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><%= image_tag current_user.avatar.url, class: 'img-navbar' %> Franz Beltran</a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Terminar sesión', sign_out_path, method: :delete %></li>
-          </ul>
-        </li>
-
-      </ul>
-
-      <%= form_tag search_path, id: 'formulario', class: 'navbar-form navbar-left', method: :get do %>
-          <div class="form-group">
-            <%= text_field_tag :query, params[:query],  class: 'form-control typeahead', placeholder: 'Buscar...'%>
-          </div>
-          <!--<%= submit_tag 'Search', class: 'btn btn-primary' %>-->
-
-      <% end %>
-    </div>
-
-  </div>
-</nav>
+  <%= render partial: 'layouts/top_navbar' %>
 <% end %>
-
-  <%= yield %>
-
-
+<%= yield %>
 </body>
 </html>
 
@@ -154,11 +37,11 @@
 //        alert('franz');
         document.getElementById("formulario").submit();
     });
-    $('.content').mCustomScrollbar({
-      theme:"dark"
-    });
-    $("body").mCustomScrollbar({
-      theme:"dark"
-    });
+//    $('.content').mCustomScrollbar({
+//      theme:"dark"
+//    });
+//    $("body").mCustomScrollbar({
+//      theme:"dark"
+//    });
 
 </script>
